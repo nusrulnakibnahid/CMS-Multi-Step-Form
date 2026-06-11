@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<!-- Handled by Exflow.site -->
+<html data-wf-page="6a151d90795fc59fc9a0ec53" data-wf-site="6a12751e06b0c5b30a51319f" data-wf-status="1" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link href="https://cdn.prod.website-files.com" rel="preconnect" />
+    <title>Multi-Step Form</title>
+    <meta content="Multi-Step Form" property="og:title" />
+    <meta content="Multi-Step Form" name="twitter:title" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Webflow" name="generator" />
+    <link href="css/mutli-step-form-cms.webflow.shared.0bed59abd.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" />
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Droid Sans:400,700", "Oswald:200,300,400,500,600,700", "Inconsolata:400,700", "Exo:100,100italic,200,200italic,300,300italic,400,400italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic", "Merriweather:300,300italic,400,400italic,700,700italic,900,900italic", "PT Sans:400,400italic,700,700italic"]
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        ! function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    <link href="images/favicon.png" rel="shortcut icon" type="image/x-icon" />
+    <link href="images/app-icon.png" rel="apple-touch-icon" />
+</head>
+
+<body>
+    <div class="page-wrapper">
+        <section class="section">
+            <div class="w-layout-blockcontainer container w-container">
+                <div class="hero-heading-wrapper">
+                    <div class="hero-badge"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg"><path d="M13.64,9.74l-.29,1.73A1.55,1.55,0,0,0,14,13a1.46,1.46,0,0,0,1.58.09L17,12.28l1.44.79A1.46,1.46,0,0,0,20,13a1.55,1.55,0,0,0,.63-1.51l-.29-1.73,1.2-1.22a1.54,1.54,0,0,0-.85-2.6l-1.62-.24-.73-1.55a1.5,1.5,0,0,0-2.72,0l-.73,1.55-1.62.24a1.54,1.54,0,0,0-.85,2.6Zm1.83-2.13a1.51,1.51,0,0,0,1.14-.85L17,5.93l.39.83a1.55,1.55,0,0,0,1.14.86l1,.14-.73.74a1.57,1.57,0,0,0-.42,1.34l.16,1-.79-.43a1.48,1.48,0,0,0-1.44,0l-.79.43.16-1a1.54,1.54,0,0,0-.42-1.33l-.73-.75ZM21,15.26a1,1,0,0,0-1,1v3a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V9.67l5.88,5.88a2.94,2.94,0,0,0,2.1.88l.27,0a1,1,0,0,0,.91-1.08,1,1,0,0,0-1.09-.91.94.94,0,0,1-.77-.28L5.41,8.26H9a1,1,0,0,0,0-2H5a3,3,0,0,0-3,3v10a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3v-3A1,1,0,0,0,21,15.26Z" fill="currentColor"></path></svg>
+                        <div class="badge-text">Smart onboarding · 4 steps · ~2 min</div>
+                    </div>
+                    <div class="hero-heading-text">
+                        <h1 class="hero-h1">Let&#x27;s get to know you</h1>
+                        <p class="hero-p">A short, beautiful form to set up your profile. Your details are saved as you type.<br/><br/></p>
+                    </div>
+                </div>
+                <div class="progress-bar-main-wrap">
+                    <div class="w-embed w-script">
+                        <style>
+                            .pb-wrap {
+                                background: #fff;
+                                border-radius: 12px;
+                                border: 1px solid #e5e7eb;
+                                padding: 16px 20px;
+                                box-sizing: border-box;
+                                width: 100%;
+                                margin-bottom: 20px;
+                            }
+                            
+                            .pb-top {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                margin-bottom: 12px;
+                                gap: 16px;
+                            }
+                            
+                            .pb-dots {
+                                display: flex;
+                                align-items: center;
+                                flex: 1;
+                                min-width: 0;
+                            }
+                            
+                            .pb-dot {
+                                width: 36px;
+                                height: 36px;
+                                min-width: 36px;
+                                flex-shrink: 0;
+                                border-radius: 50%;
+                                border: 2px solid #d1d5db;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 13px;
+                                font-weight: 600;
+                                color: #9ca3af;
+                                background: #fff;
+                                transition: all .3s ease;
+                            }
+                            
+                            .pb-dot.done {
+                                background: #22c55e;
+                                border-color: #22c55e;
+                                color: #fff;
+                            }
+                            
+                            .pb-dot.active {
+                                background: #ff4500;
+                                border-color: #ff4500;
+                                color: #fff;
+                            }
+                            
+                            .pb-line {
+                                flex: 1;
+                                height: 2px;
+                                background: #e5e7eb;
+                                transition: background .3s ease;
+                            }
+                            
+                            .pb-line.done {
+                                background: #ff4500;
+                            }
+                            
+                            .pb-info {
+                                text-align: right;
+                                flex-shrink: 0;
+                                min-width: 60px;
+                            }
+                            
+                            .pb-label {
+                                font-size: 11px;
+                                color: #6b7280;
+                                margin-bottom: 1px;
+                            }
+                            
+                            .pb-pct {
+                                font-size: 20px;
+                                font-weight: 700;
+                                color: #111827;
+                                transition: all .3s;
+                            }
+                            
+                            .pb-track {
+                                height: 5px;
+                                background: #f3f4f6;
+                                border-radius: 3px;
+                                overflow: hidden;
+                                margin-bottom: 7px;
+                            }
+                            
+                            .pb-fill {
+                                height: 100%;
+                                border-radius: 3px;
+                                background: linear-gradient(90deg, #22c55e, #ff4500);
+                                transition: width .4s ease;
+                                width: 0%;
+                            }
+                            
+                            .pb-step-lbl {
+                                font-size: 11px;
+                                font-weight: 600;
+                                color: #ff4500;
+                                letter-spacing: .5px;
+                            }
+                            
+                            @media(max-width:479px) {
+                                .pb-dot {
+                                    width: 28px;
+                                    height: 28px;
+                                    min-width: 28px;
+                                    font-size: 11px;
+                                }
+                                .pb-pct {
+                                    font-size: 16px;
+                                }
+                                .pb-wrap {
+                                    padding: 12px;
+                                }
+                                .pb-info {
+                                    min-width: 50px;
+                                }
+                            }
+                            
+                            @media(min-width:480px) and (max-width:767px) {
+                                .pb-dot {
+                                    width: 32px;
+                                    height: 32px;
+                                    min-width: 32px;
+                                    font-size: 12px;
+                                }
+                                .pb-pct {
+                                    font-size: 18px;
+                                }
+                            }
+                        </style>
+
+                        <div class="pb-wrap" id="multi-step-progress">
+                            <div class="pb-top">
+                                <div class="pb-dots">
+                                    <div class="pb-dot active" id="pb-d1">1</div>
+                                    <div class="pb-line" id="pb-l1"></div>
+                                    <div class="pb-dot" id="pb-d2">2</div>
+                                    <div class="pb-line" id="pb-l2"></div>
+                                    <div class="pb-dot" id="pb-d3">3</div>
+                                    <div class="pb-line" id="pb-l3"></div>
+                                    <div class="pb-dot" id="pb-d4">4</div>
+                                </div>
+                                <div class="pb-info">
+                                    <div class="pb-label">Progress</div>
+                                    <div class="pb-pct" id="pb-pct">0%</div>
+                                </div>
+                            </div>
+                            <div class="pb-track">
+                                <div class="pb-fill" id="pb-fill"></div>
+                            </div>
+                            <div class="pb-step-lbl" id="pb-lbl">STEP 1 OF 4</div>
+                        </div>
+
+                        <script>
+                            (function() {
+                                var total = 4;
+
+                                function isFilled(f) {
+                                    if (f.type === 'checkbox' || f.type === 'radio') return f.checked;
+                                    return f.tagName === 'SELECT' ?
+                                        f.value !== '' && f.value !== null :
+                                        f.value.trim() !== '';
+                                }
+
+                                function getAllFields() {
+                                    return Array.from(document.querySelectorAll(
+                                        '.form-item input[type="text"],.form-item input[type="email"],.form-item input[type="tel"],.form-item input[type="number"],.form-item input[type="url"],.form-item select,.form-item textarea'
+                                    ));
+                                }
+
+                                function getCurrentStepIndex() {
+                                    var items = document.querySelectorAll('.form-item');
+                                    for (var i = 0; i < items.length; i++) {
+                                        var s = window.getComputedStyle(items[i]);
+                                        if (s.display !== 'none' && s.visibility !== 'hidden' && s.opacity !== '0') return i;
+                                    }
+                                    return 0;
+                                }
+
+                                function getStepFields(idx) {
+                                    var items = document.querySelectorAll('.form-item');
+                                    if (!items[idx]) return [];
+                                    return Array.from(items[idx].querySelectorAll(
+                                        'input[type="text"],input[type="email"],input[type="tel"],input[type="number"],input[type="url"],select,textarea'
+                                    ));
+                                }
+
+                                function updateBar() {
+                                    var curIdx = getCurrentStepIndex();
+                                    var curStep = curIdx + 1;
+                                    var all = getAllFields();
+                                    var filled = all.filter(isFilled).length;
+                                    var pct = all.length > 0 ? Math.round(filled / all.length * 100) : 0;
+
+                                    document.getElementById('pb-pct').textContent = pct + '%';
+                                    document.getElementById('pb-fill').style.width = pct + '%';
+                                    document.getElementById('pb-lbl').textContent = 'STEP ' + curStep + ' OF ' + total;
+
+                                    for (var i = 1; i <= total; i++) {
+                                        var d = document.getElementById('pb-d' + i);
+                                        d.classList.remove('done', 'active');
+                                        if (i < curStep) {
+                                            var sf = getStepFields(i - 1);
+                                            var allDone = sf.length > 0 && sf.every(isFilled);
+                                            d.classList.add('done');
+                                            d.innerHTML = allDone ? '&#10003;' : i;
+                                        } else if (i === curStep) {
+                                            d.classList.add('active');
+                                            d.textContent = i;
+                                        } else {
+                                            d.textContent = i;
+                                        }
+                                        if (i < total) {
+                                            var l = document.getElementById('pb-l' + i);
+                                            i < curStep ? l.classList.add('done') : l.classList.remove('done');
+                                        }
+                                    }
+                                }
+
+                                function attachListeners() {
+                                    getAllFields().forEach(function(f) {
+                                        f.removeEventListener('input', updateBar);
+                                        f.removeEventListener('change', updateBar);
+                                        f.addEventListener('input', updateBar);
+                                        f.addEventListener('change', updateBar);
+                                    });
+                                }
+
+                                var obs = new MutationObserver(function() {
+                                    setTimeout(function() {
+                                        attachListeners();
+                                        updateBar();
+                                    }, 100);
+                                });
+
+                                document.addEventListener('click', function(e) {
+                                    if (e.target.closest('.btn')) setTimeout(updateBar, 150);
+                                });
+
+                                function init() {
+                                    var form = document.querySelector('.form-block') || document.body;
+                                    obs.observe(form, {
+                                        attributes: true,
+                                        childList: true,
+                                        subtree: true,
+                                        attributeFilter: ['style', 'class']
+                                    });
+                                    attachListeners();
+                                    updateBar();
+                                }
+
+                                document.readyState === 'loading' ?
+                                    document.addEventListener('DOMContentLoaded', init) :
+                                    init();
+                            })();
+                        </script>
+                    </div>
+                </div>
+                <div class="w-form">
+                    <form id="wf-form-step-2" name="wf-form-step-2" data-name="step" method="get" data-form="multistep" class="form" data-wf-page-id="6a151d90795fc59fc9a0ec53" data-wf-element-id="ac2fd011-ef2b-51f5-1960-a6e393e9e0cb" data-turnstile-sitekey="0x4AAAAAAAQTptj2So4dx43e">
+                        <div data-form="step" class="form-item">
+                            <div class="form-item-heading">
+                                <h2 class="step-h2">Step 01</h2>
+                                <h3 class="form-item-h3">Personal Information</h3>
+                            </div>
+                            <div class="text-field-box">
+                                <div class="text-field-box-item">
+                                    <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" class="icon"><path d="M16.5763 3.9426C15.6642 2.95783 14.3902 2.41553 12.9841 2.41553C11.5704 2.41553 10.2922 2.95455 9.38432 3.93323C8.46658 4.92268 8.01943 6.26743 8.12442 7.7195C8.33253 10.5843 10.5125 12.9147 12.9841 12.9147C15.4556 12.9147 17.6318 10.5848 17.8432 7.72044C17.9496 6.28149 17.4996 4.93956 16.5763 3.9426Z" fill="currentColor"></path><path d="M21.2333 23.4139H4.73453C4.51858 23.4167 4.30471 23.3713 4.1085 23.2811C3.91228 23.1908 3.73865 23.058 3.60024 22.8922C3.29558 22.528 3.17277 22.0307 3.2637 21.5278C3.6593 19.3332 4.89389 17.4898 6.83437 16.1957C8.5583 15.0468 10.742 14.4146 12.9839 14.4146C15.2258 14.4146 17.4095 15.0473 19.1334 16.1957C21.0739 17.4893 22.3085 19.3328 22.7041 21.5273C22.795 22.0302 22.6722 22.5275 22.3676 22.8917C22.2292 23.0576 22.0556 23.1905 21.8594 23.2809C21.6632 23.3712 21.4493 23.4166 21.2333 23.4139Z" fill="currentColor"></path></svg>
+                                        <label for="name" class="form-item-text">Full Name</label>
+                                    </div><input class="text-field w-input" maxlength="256" name="name" data-name="Name" placeholder="Enter Your Name...." type="text" id="name" required="" /></div>
+                                <div class="text-field-box-item">
+                                    <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><path d="M22 6V4L14 9L6 4V6L14 11L22 6ZM22 2C22.5304 2 23.0391 2.21071 23.4142 2.58579C23.7893 2.96086 24 3.46957 24 4V16C24 16.5304 23.7893 17.0391 23.4142 17.4142C23.0391 17.7893 22.5304 18 22 18H6C4.89 18 4 17.1 4 16V4C4 2.89 4.89 2 6 2H22ZM2 6V20H20V22H2C1.46957 22 0.960859 21.7893 0.585786 21.4142C0.210714 21.0391 0 20.5304 0 20V6H2Z" fill="currentColor"></path></svg>
+                                        <label for="Email" class="form-item-text">Email Address</label>
+                                    </div><input class="text-field w-input" maxlength="256" name="Email" data-name="Email" placeholder="Enter Your Email...." type="email" id="Email" required="" /></div>
+                                <div class="text-field-box-item">
+                                    <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25" class="icon"><path d="M0.964844 9.16481V16.6642C0.964844 17.4598 1.28089 18.2228 1.84346 18.7854C2.40602 19.348 3.16903 19.664 3.96462 19.664H21.9633C22.7588 19.664 23.5218 19.348 24.0844 18.7854C24.647 18.2228 24.963 17.4598 24.963 16.6642V9.16481C24.963 8.36922 24.647 7.60622 24.0844 7.04365C23.5218 6.48109 22.7588 6.16504 21.9633 6.16504H3.96462C3.16903 6.16504 2.40602 6.48109 1.84346 7.04365C1.28089 7.60622 0.964844 8.36922 0.964844 9.16481H0.964844ZM21.9633 7.66493C22.3611 7.66493 22.7426 7.82295 23.0238 8.10423C23.3051 8.38552 23.4631 8.76702 23.4631 9.16481V16.6642C23.4631 17.062 23.3051 17.4435 23.0238 17.7248C22.7426 18.0061 22.3611 18.1641 21.9633 18.1641H3.96462C3.56682 18.1641 3.18532 18.0061 2.90404 17.7248C2.62275 17.4435 2.46473 17.062 2.46473 16.6642V16.1323C2.46447 16.0597 2.4854 15.9887 2.52495 15.9279C2.5645 15.8671 2.62096 15.8192 2.68737 15.7901C2.95544 15.6736 3.18365 15.4814 3.34395 15.237C3.50425 14.9926 3.58964 14.7067 3.58965 14.4144V11.4146C3.58964 11.1224 3.50425 10.8365 3.34395 10.5921C3.18365 10.3477 2.95544 10.1554 2.68737 10.039C2.62096 10.0098 2.5645 9.96192 2.52495 9.90114C2.4854 9.84035 2.46447 9.76933 2.46473 9.6968V9.16481C2.46473 8.76702 2.62275 8.38552 2.90404 8.10423C3.18532 7.82295 3.56682 7.66493 3.96462 7.66493H21.9633Z" fill="currentColor"></path><path d="M3.21485 9.16498C3.21433 9.25139 3.23391 9.33673 3.27207 9.41426C3.31022 9.49179 3.36589 9.55937 3.43468 9.61167C3.71549 9.82102 3.94355 10.0931 4.10068 10.4061C4.25781 10.7191 4.33968 11.0645 4.33977 11.4148V14.4146C4.33968 14.7649 4.25781 15.1103 4.10068 15.4233C3.94355 15.7363 3.71549 16.0084 3.43468 16.2177C3.36589 16.27 3.31022 16.3376 3.27207 16.4151C3.23391 16.4927 3.21433 16.578 3.21485 16.6644C3.21485 16.8633 3.29387 17.0541 3.43451 17.1947C3.57515 17.3354 3.7659 17.4144 3.9648 17.4144H21.9634C22.1623 17.4144 22.3531 17.3354 22.4937 17.1947C22.6344 17.0541 22.7134 16.8633 22.7134 16.6644V9.16498C22.7134 8.96609 22.6344 8.77533 22.4937 8.63469C22.3531 8.49405 22.1623 8.41504 21.9634 8.41504H3.9648C3.7659 8.41504 3.57515 8.49405 3.43451 8.63469C3.29387 8.77533 3.21485 8.96609 3.21485 9.16498Z" fill="currentColor"></path><path d="M0.964844 9.16481V16.6642C0.964844 17.4598 1.28089 18.2228 1.84346 18.7854C2.40602 19.348 3.16903 19.664 3.96462 19.664H21.9633C22.7588 19.664 23.5218 19.348 24.0844 18.7854C24.647 18.2228 24.963 17.4598 24.963 16.6642V9.16481C24.963 8.36922 24.647 7.60622 24.0844 7.04365C23.5218 6.48109 22.7588 6.16504 21.9633 6.16504H3.96462C3.16903 6.16504 2.40602 6.48109 1.84346 7.04365C1.28089 7.60622 0.964844 8.36922 0.964844 9.16481H0.964844ZM21.9633 7.66493C22.3611 7.66493 22.7426 7.82295 23.0238 8.10423C23.3051 8.38552 23.4631 8.76702 23.4631 9.16481V16.6642C23.4631 17.062 23.3051 17.4435 23.0238 17.7248C22.7426 18.0061 22.3611 18.1641 21.9633 18.1641H3.96462C3.56682 18.1641 3.18532 18.0061 2.90404 17.7248C2.62275 17.4435 2.46473 17.062 2.46473 16.6642V16.1323C2.46447 16.0597 2.4854 15.9887 2.52495 15.9279C2.5645 15.8671 2.62096 15.8192 2.68737 15.7901C2.95544 15.6736 3.18365 15.4814 3.34395 15.237C3.50425 14.9926 3.58964 14.7067 3.58965 14.4144V11.4146C3.58964 11.1224 3.50425 10.8365 3.34395 10.5921C3.18365 10.3477 2.95544 10.1554 2.68737 10.039C2.62096 10.0098 2.5645 9.96192 2.52495 9.90114C2.4854 9.84035 2.46447 9.76933 2.46473 9.6968V9.16481C2.46473 8.76702 2.62275 8.38552 2.90404 8.10423C3.18532 7.82295 3.56682 7.66493 3.96462 7.66493H21.9633Z" fill="currentColor"></path></svg>
+                                        <label for="Phone" class="form-item-text">Phone</label>
+                                    </div><input class="text-field w-input" maxlength="256" name="Phone" data-name="Phone" placeholder="Enter Your Phone...." type="tel" id="Phone" required="" /></div>
+                                <div class="text-field-box-item">
+                                    <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><g clip-path="url(#clip0_31_25391)" class="icon"><path d="M4 6C4.52742 6 5.04299 5.82405 5.48152 5.49441C5.92005 5.16477 6.26185 4.69623 6.46368 4.14805C6.66551 3.59987 6.71832 2.99667 6.61543 2.41473C6.51253 1.83279 6.25856 1.29824 5.88562 0.878681C5.51268 0.459123 5.03752 0.173401 4.52024 0.0576455C4.00296 -0.0581102 3.46678 0.00129984 2.97951 0.228363C2.49224 0.455426 2.07576 0.839943 1.78275 1.33329C1.48973 1.82664 1.33333 2.40666 1.33333 3C1.33333 3.79565 1.61428 4.55871 2.11438 5.12132C2.61448 5.68393 3.29276 6 4 6ZM4 14.2538C3.99941 13.9734 4.04948 13.6959 4.14718 13.4381C4.24488 13.1802 4.38817 12.9474 4.56833 12.7538L7.57375 9.5625C7.6425 9.48985 7.73083 9.45422 7.8075 9.39516C7.61141 8.8367 7.27068 8.35742 6.8295 8.01949C6.38833 7.68156 5.86706 7.50057 5.33333 7.5H2.66667C1.95942 7.5 1.28115 7.81607 0.781049 8.37868C0.280952 8.94129 0 9.70435 0 10.5L0 15C0 15.3978 0.140476 15.7794 0.390524 16.0607C0.640573 16.342 0.979711 16.5 1.33333 16.5V22.5C1.33333 22.8978 1.47381 23.2794 1.72386 23.5607C1.97391 23.842 2.31304 24 2.66667 24H5.33333C5.68696 24 6.02609 23.842 6.27614 23.5607C6.52619 23.2794 6.66667 22.8978 6.66667 22.5V17.9817L4.56833 15.7538C4.38811 15.5602 4.24479 15.3274 4.14708 15.0695C4.04938 14.8116 3.99933 14.5341 4 14.2538ZM20 6C20.5274 6 21.043 5.82405 21.4815 5.49441C21.9201 5.16477 22.2618 4.69623 22.4637 4.14805C22.6655 3.59987 22.7183 2.99667 22.6154 2.41473C22.5125 1.83279 22.2586 1.29824 21.8856 0.878681C21.5127 0.459123 21.0375 0.173401 20.5202 0.0576455C20.003 -0.0581102 19.4668 0.00129984 18.9795 0.228363C18.4922 0.455426 18.0758 0.839943 17.7827 1.33329C17.4897 1.82664 17.3333 2.40666 17.3333 3C17.3333 3.79565 17.6143 4.55871 18.1144 5.12132C18.6145 5.68393 19.2928 6 20 6ZM21.3333 7.5H18.6667C18.133 7.50053 17.6118 7.68145 17.1706 8.0193C16.7294 8.35714 16.3887 8.83632 16.1925 9.39469C16.2692 9.45422 16.3592 9.48844 16.4267 9.56297L19.4317 12.7533C19.6113 12.9474 19.7542 13.1803 19.8518 13.438C19.9494 13.6958 19.9998 13.9731 19.9998 14.2533C19.9998 14.5335 19.9494 14.8108 19.8518 15.0685C19.7542 15.3263 19.6113 15.5592 19.4317 15.7533L17.3333 17.9822V22.5C17.3333 22.8978 17.4738 23.2794 17.7239 23.5607C17.9739 23.842 18.313 24 18.6667 24H21.3333C21.687 24 22.0261 23.842 22.2761 23.5607C22.5262 23.2794 22.6667 22.8978 22.6667 22.5V16.5C23.0203 16.5 23.3594 16.342 23.6095 16.0607C23.8595 15.7794 24 15.3978 24 15V10.5C24 9.70435 23.719 8.94129 23.219 8.37868C22.7189 7.81607 22.0406 7.5 21.3333 7.5ZM18.5167 13.8441L15.5117 10.6538C15.4407 10.5777 15.3515 10.5267 15.2551 10.5073C15.1586 10.4878 15.0592 10.5006 14.9692 10.5441C14.8791 10.5877 14.8025 10.66 14.7487 10.7522C14.6949 10.8444 14.6664 10.9523 14.6667 11.0625V12.75H9.33333V11.0625C9.3337 10.9522 9.30523 10.8442 9.25149 10.752C9.19774 10.6598 9.12108 10.5874 9.03103 10.5438C8.94099 10.5002 8.84154 10.4873 8.74505 10.5068C8.64856 10.5262 8.55929 10.5772 8.48833 10.6533L5.48333 13.8441C5.38728 13.9529 5.33338 14.1001 5.33338 14.2535C5.33338 14.4069 5.38728 14.5541 5.48333 14.663L8.48833 17.8538C8.55931 17.9299 8.64863 17.9808 8.74516 18.0003C8.84168 18.0198 8.94117 18.0068 9.03123 17.9632C9.12129 17.9195 9.19794 17.847 9.25166 17.7547C9.30538 17.6624 9.33378 17.5544 9.33333 17.4441V15.75H14.6667V17.4441C14.6662 17.5544 14.6946 17.6624 14.7483 17.7547C14.8021 17.847 14.8787 17.9195 14.9688 17.9632C15.0588 18.0068 15.1583 18.0198 15.2548 18.0003C15.3514 17.9808 15.4407 17.9299 15.5117 17.8538L18.5167 14.663C18.6127 14.5541 18.6666 14.4069 18.6666 14.2535C18.6666 14.1001 18.6127 13.9529 18.5167 13.8441Z" fill="currentColor" class="icon"></path></g><defs><clipPath id="clip0_31_25391"><rect width="24" height="24" fill="currentColor"></rect></clipPath></defs></svg>
+                                        <label for="Gender" class="form-item-text">Gender</label>
+                                    </div><select id="Gender" name="Gender" data-name="Gender" required="" class="text-field w-select"><option value="">Select one...</option><option value="Male">Male</option><option value="Female">Female</option><option value="Other">Other</option></select></div>
+                            </div>
+                        </div>
+                        <div data-form="step" class="form-item">
+                            <div class="form-item-heading">
+                                <h2 class="step-h2">Step 02</h2>
+                                <h3 class="form-item-h3">Address Information</h3>
+                            </div>
+                            <div class="text-field-box">
+                                <div class="text-field-box-item">
+                                    <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><path d="M11.9023 5.98108C11.309 5.98108 10.729 6.15703 10.2356 6.48667C9.74229 6.81631 9.35777 7.28485 9.13071 7.83303C8.90364 8.38121 8.84423 8.98441 8.95999 9.56635C9.07574 10.1483 9.36147 10.6828 9.78102 11.1024C10.2006 11.522 10.7351 11.8077 11.3171 11.9234C11.899 12.0392 12.5022 11.9798 13.0504 11.7527C13.5986 11.5257 14.0671 11.1411 14.3968 10.6478C14.7264 10.1544 14.9023 9.57442 14.9023 8.98108C14.9014 8.18571 14.5851 7.42317 14.0227 6.86076C13.4603 6.29835 12.6977 5.98198 11.9023 5.98108ZM11.9023 10.4811C11.6057 10.4811 11.3157 10.3931 11.069 10.2283C10.8223 10.0635 10.6301 9.82919 10.5165 9.5551C10.403 9.28102 10.3733 8.97941 10.4312 8.68844C10.489 8.39747 10.6319 8.1302 10.8417 7.92042C11.0515 7.71064 11.3187 7.56778 11.6097 7.5099C11.9007 7.45202 12.2023 7.48173 12.4764 7.59526C12.7505 7.70879 12.9847 7.90105 13.1495 8.14772C13.3144 8.3944 13.4023 8.68441 13.4023 8.98108C13.4019 9.37876 13.2437 9.76003 12.9625 10.0412C12.6813 10.3224 12.3 10.4806 11.9023 10.4811Z" fill="currentColor"></path><path d="M17.6666 3.2117C16.2413 1.78672 14.3386 0.940225 12.3259 0.835587C10.3131 0.73095 8.33293 1.37559 6.76751 2.64509C5.20209 3.91459 4.16241 5.71895 3.84912 7.70994C3.53583 9.70092 3.97114 11.7374 5.07105 13.4263L10.7386 22.1269C10.8647 22.3205 11.0371 22.4796 11.2403 22.5897C11.4434 22.6998 11.6708 22.7574 11.9019 22.7574C12.1329 22.7574 12.3604 22.6998 12.5635 22.5897C12.7666 22.4796 12.9391 22.3205 13.0652 22.1269L18.7329 13.4263C19.7535 11.8596 20.2045 9.98968 20.0104 8.12999C19.8163 6.2703 18.9888 4.53385 17.6666 3.2117ZM17.4761 12.6075L11.9019 21.1645L6.32767 12.6075C4.62142 9.98819 4.98737 6.48287 7.19781 4.27234C7.81556 3.65458 8.54893 3.16454 9.35606 2.83021C10.1632 2.49588 11.0283 2.3238 11.9019 2.3238C12.7755 2.3238 13.6406 2.49588 14.4478 2.83021C15.2549 3.16454 15.9883 3.65458 16.606 4.27234C18.8164 6.48287 19.1823 9.98819 17.4761 12.6075Z" fill="currentColor"></path></svg>
+                                        <label for="Address" class="form-item-text">Street Address</label>
+                                    </div><input class="text-field w-input" maxlength="256" name="Address" data-name="Address" placeholder="Enter Your Address...." type="text" id="Address" required="" />
+                                    <div class="text-field-box-item-step2">
+                                        <div class="text-field-box-item">
+                                            <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><path d="M19 9V7C19 6.46957 18.7893 5.96086 18.4142 5.58579C18.0391 5.21071 17.5304 5 17 5H16V2H14V5H13C12.4696 5 11.9609 5.21071 11.5858 5.58579C11.2107 5.96086 11 6.46957 11 7V9C10.4696 9 9.96086 9.21071 9.58579 9.58579C9.21071 9.96086 9 10.4696 9 11V12H5C4.46957 12 3.96086 12.2107 3.58579 12.5858C3.21071 12.9609 3 13.4696 3 14V22H6V20H8V22H12V20H14V22H16V20H18V22H21V11C21 10.4696 20.7893 9.96086 20.4142 9.58579C20.0391 9.21071 19.5304 9 19 9ZM8 18H6V16H8V18ZM14 18H12V16H14V18ZM14 14H12V12H14V14ZM13 9V7H17V9H13ZM18 18H16V16H18V18ZM18 14H16V12H18V14Z" fill="currentColor"></path></svg>
+                                                <label for="City" class="form-item-text">City</label>
+                                            </div><input class="text-field w-input" maxlength="256" name="City" data-name="City" placeholder="Enter Your City...." type="text" id="City" required="" /></div>
+                                        <div class="text-field-box-item">
+                                            <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><path d="M6.27 17.05C6.72 17.58 7 18.25 7 19C7 20.66 5.66 22 4 22C2.34 22 1 20.66 1 19C1 17.34 2.34 16 4 16C4.18 16 4.36 16 4.53 16.05L7.6 10.69L5.86 9.7L9.95 8.58L11.07 12.67L9.33 11.68L6.27 17.05ZM20 16C18.7 16 17.6 16.84 17.18 18H11V16L8 19L11 22V20H17.18C17.6 21.16 18.7 22 20 22C21.66 22 23 20.66 23 19C23 17.34 21.66 16 20 16ZM12 8C12.18 8 12.36 8 12.53 7.95L15.6 13.31L13.86 14.3L17.95 15.42L19.07 11.33L17.33 12.32L14.27 6.95C14.72 6.42 15 5.75 15 5C15 3.34 13.66 2 12 2C10.34 2 9 3.34 9 5C9 6.66 10.34 8 12 8Z" fill="currentColor"></path></svg>
+                                                <label for="State" class="form-item-text">State/Region</label>
+                                            </div><input class="text-field w-input" maxlength="256" name="State" data-name="State" placeholder="Enter Your State...." type="text" id="State" required="" /></div>
+                                        <div class="text-field-box-item">
+                                            <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="icon"><path d="M 11 5 L 11 11 L 5 11 L 5 13 L 11 13 L 11 19 L 5 19 L 5 21 L 11 21 L 11 27 L 13 27 L 13 21 L 19 21 L 19 27 L 21 27 L 21 21 L 27 21 L 27 19 L 21 19 L 21 13 L 27 13 L 27 11 L 21 11 L 21 5 L 19 5 L 19 11 L 13 11 L 13 5 Z M 13 13 L 19 13 L 19 19 L 13 19 Z" fill="currentColor" class="icon"></path></svg>
+                                                <label for="Zip-Code" class="form-item-text">Zip Code</label>
+                                            </div><input class="text-field w-input" maxlength="256" name="Zip-Code" data-name="Zip Code" placeholder="ZIP/Postal Code..." type="number" id="Zip-Code" required="" /></div>
+                                        <div class="text-field-box-item">
+                                            <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="icon"><path d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44Z" stroke="currentColor" stroke-width="4" fill="transparent"></path><path d="M4 20.8404C7.01485 19.4168 9.24466 19.2185 10.6894 20.2454C12.8566 21.7859 13.1283 28.064 18.0575 25.0635C22.9867 22.063 15.9467 20.8404 17.475 16.4939C19.0033 12.1474 24.0083 15.5237 24.5059 10.7627C24.8375 7.58862 21.0408 6.37413 13.1156 7.11921" stroke="currentColor" stroke-width="4" fill="transparent"></path><path d="M36.0001 8C30.2857 12.9886 28.2899 16.0011 30.0127 17.0373C32.5968 18.5917 33.6933 16.4033 36.8467 17.0373C40.0001 17.6714 39.3173 21.9457 37.6587 21.9457C36.0001 21.9457 27.41 20.8518 27.8427 25.865C28.2753 30.8781 33.4422 31.6203 33.4422 34.4211C33.4422 36.2883 32.299 39.146 30.0127 42.9942" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="transparent"></path><path d="M6.10449 32.9264C7.01598 32.5288 7.70115 32.2374 8.15999 32.052C12.0071 30.4978 14.8617 30.1314 16.7236 30.953C20.0161 32.4059 18.7503 35.3401 19.7816 36.4211C20.8128 37.5021 23.388 37.1876 23.388 39.244C23.388 40.615 22.9275 42.1637 22.0065 43.8901" stroke="currentColor" stroke-width="4" stroke-linecap="round" fill="transparent"></path></svg>
+                                                <label for="Country" class="form-item-text">Country</label>
+                                            </div><select id="Country" name="Country" data-name="Country" required="" class="text-field w-select"><option value="">Select one...</option><option value="Bangladesh">Bangladesh</option><option value="India">India</option><option value="Pakistan">Pakistan</option><option value="USA">USA</option><option value="UK">UK</option><option value="Others">Others</option></select></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-form="step" class="form-item">
+                            <div class="form-item-heading">
+                                <h2 class="step-h2">Step 03</h2>
+                                <h3 class="form-item-h3">Education Information</h3>
+                            </div>
+                            <div class="text-field-box">
+                                <div class="text-field-box-item">
+                                    <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="icon"><path d="M4 42H44" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="miter" fill="transparent"></path><rect x="8" y="22" width="12" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter"></rect><rect x="20" y="4" width="20" height="38" rx="2" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter"></rect><path d="M28 32.0083H32" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="miter" fill="transparent"></path><path d="M12 32.0083H16" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="miter" fill="transparent"></path><path d="M28 23.0083H32" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="miter" fill="transparent"></path><path d="M28 14.0083H32" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="miter" fill="transparent"></path></svg>
+                                        <label for="Institution-Name" class="form-item-text">Institution Name</label>
+                                    </div><input class="text-field w-input" maxlength="256" name="Institution-Name" data-name="Institution Name" placeholder="Enter Your Institution Name...." type="text" id="Institution-Name" required="" />
+                                    <div class="text-field-box-item-step2">
+                                        <div class="text-field-box-item">
+                                            <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="icon"><path d="M2 17.4L23.0222 9L44.0444 17.4L23.0222 25.8L2 17.4Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="miter"></path><path d="M44.0444 17.51V26.7332" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="miter" fill="transparent"></path><path d="M11.5557 21.8252V34.2666C11.5557 34.2666 16.3658 38.9999 23.0224 38.9999C29.679 38.9999 34.4891 34.2666 34.4891 34.2666V21.8252" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="miter" fill="transparent"></path></svg>
+                                                <label for="Degree" class="form-item-text">Degree</label>
+                                            </div><select id="Degree" name="Degree" data-name="Degree" class="text-field w-select"><option value="">Select one...</option><option value="High School Diploma">High School Diploma</option><option value="SSC">SSC</option><option value="HSC">HSC</option><option value="B.Sc">B.Sc</option><option value="M.Sc">M.Sc</option><option value="PhD">PhD</option><option value="Others">Others</option></select></div>
+                                        <div class="text-field-box-item">
+                                            <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><path d="M22.47,18.82l-1-3.86h0L18.32,3.37a1,1,0,0,0-1.22-.71l-3.87,1a1,1,0,0,0-.73-.33H2.5a1,1,0,0,0-1,1v16a1,1,0,0,0,1,1h10a1,1,0,0,0,1-1v-8l2.2,8.22a1,1,0,0,0,1,.74,1.15,1.15,0,0,0,.26,0l4.83-1.29a1,1,0,0,0,.61-.47A1.05,1.05,0,0,0,22.47,18.82Zm-16,.55h-3v-2h3Zm0-4h-3v-6h3Zm0-8h-3v-2h3Zm5,12h-3v-2h3Zm0-4h-3v-6h3Zm0-8h-3v-2h3Zm2.25-1.74,2.9-.78.52,1.93-2.9.78Zm2.59,9.66-1.55-5.8,2.9-.78,1.55,5.8Zm1,3.86-.52-1.93,2.9-.78.52,1.93Z" fill="currentColor"></path></svg>
+                                                <label for="Field-Of-Study" class="form-item-text">Field Of Study</label>
+                                            </div><input class="text-field w-input" maxlength="256" name="Field-Of-Study" data-name="Field Of Study" placeholder="Enter Your Study Field...." type="text" id="Field-Of-Study" required="" /></div>
+                                        <div id="w-node-f18ebe7d-f432-90b9-d620-0147418dd101-c9a0ec53" class="text-field-box-item">
+                                            <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon"><path d="M19,4H17V3a1,1,0,0,0-2,0V4H9V3A1,1,0,0,0,7,3V4H5A3,3,0,0,0,2,7V19a3,3,0,0,0,3,3H19a3,3,0,0,0,3-3V7A3,3,0,0,0,19,4Zm1,15a1,1,0,0,1-1,1H5a1,1,0,0,1-1-1V12H20Zm0-9H4V7A1,1,0,0,1,5,6H7V7A1,1,0,0,0,9,7V6h6V7a1,1,0,0,0,2,0V6h2a1,1,0,0,1,1,1Z" fill="currentColor"></path></svg>
+                                                <label for="Graduation-Year" class="form-item-text">Graduation Year</label>
+                                            </div><input class="text-field w-input" maxlength="256" name="Graduation-Year" data-name="Graduation Year" placeholder="Graduation Year..." type="text" id="Graduation-Year" required="" /></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div data-form="step" class="form-item">
+                            <div class="form-item-heading">
+                                <h2 class="step-h2">Step 04</h2>
+                                <h3 class="form-item-h3">Resume Information</h3>
+                            </div>
+                            <div class="text-field-box">
+                                <div class="text-field-box-item">
+                                    <div class="text_icon_box"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="icon"><path fill-rule="evenodd" d="M6.5 9.5 3 7.5v-6A1.5 1.5 0 0 1 4.5 0h7A1.5 1.5 0 0 1 13 1.5v6l-3.5 2L8 8.75l-1.5.75ZM1.059 3.635 2 3.133v3.753L0 5.713V5.4a2 2 0 0 1 1.059-1.765ZM16 5.713l-2 1.173V3.133l.941.502A2 2 0 0 1 16 5.4v.313Zm0 1.16-5.693 3.337L16 13.372v-6.5Zm-8 3.199 7.941 4.412A2 2 0 0 1 14 16H2a2 2 0 0 1-1.941-1.516L8 10.072Zm-8 3.3 5.693-3.162L0 6.873v6.5Z" fill="currentColor"></path></svg>
+                                        <label for="CV-Resume" class="form-item-text">Enter Your CV/Resume</label>
+                                    </div><input class="text-field w-input" maxlength="256" name="CV-Resume" data-name="CV/Resume" placeholder="CV/Resume URL" type="text" id="CV-Resume" required="" /></div>
+                            </div>
+                        </div>
+                        <div class="step-ui"><a data-form="back-btn" href="#" class="btn back w-inline-block"><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="icon button"><path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5ZM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5Z" fill="currentColor"></path><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z" fill="currentColor"></path></svg></svg><div>Back button</div></a>
+                            <a data-form="next-btn" href="#" class="btn next w-inline-block">
+                                <div class="text-block-2">Next Button</div><svg width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" class="icon button"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zM4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H4.5z" fill="currentColor"></path></svg></a><input
+                                type="submit" data-wait="Please wait..." data-form="submit-btn" id="w-node-a8c0dd4d-ae89-05b3-1982-baf3898882f7-c9a0ec53" class="btn submit w-button" value="Submit" /></div>
+                    </form>
+                    <div class="success-message w-form-done">
+                        <div>Thank you! Your submission has been received!</div>
+                    </div>
+                    <div class="error-message w-form-fail">
+                        <div>Oops! Something went wrong while submitting the form.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="js/jquery.js?site=6a12751e06b0c5b30a51319f" type="text/javascript"></script>
+    <script src="js/webflow.schunk.7321a5097fb66f41.js" type="text/javascript"></script>
+    <script src="js/webflow-script.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/gh/videsigns/webflow-tools@latest/multi-step.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const steps = document.querySelectorAll(".step");
+
+            const progressBar = document.querySelector(".progress-bar");
+
+            const progressText = document.querySelector(".progress-text");
+
+            let currentStep = 0;
+
+            function showStep(index) {
+
+                steps.forEach((step) => {
+                    step.classList.remove("active");
+                });
+
+                steps[index].classList.add("active");
+
+                updateProgress();
+
+            }
+
+            function updateProgress() {
+
+                const percent = ((currentStep + 1) / steps.length) * 100;
+
+                progressBar.style.width = percent + "%";
+
+                progressText.innerText = Math.round(percent) + "%";
+
+            }
+
+            showStep(currentStep);
+
+            function nextStep() {
+
+                if (currentStep < steps.length - 1) {
+
+                    currentStep++;
+
+                    showStep(currentStep);
+
+                }
+
+            }
+
+            function prevStep() {
+
+                if (currentStep > 0) {
+
+                    currentStep--;
+
+                    showStep(currentStep);
+
+                }
+
+            }
+
+            document.getElementById("next-1") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    nextStep();
+
+                });
+
+            document.getElementById("next-2") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    nextStep();
+
+                });
+
+            document.getElementById("next-3") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    nextStep();
+
+                });
+
+            document.getElementById("prev-2") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    prevStep();
+
+                });
+
+            document.getElementById("prev-3") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    prevStep();
+
+                });
+
+            document.getElementById("prev-4") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    prevStep();
+
+                });
+
+            document.getElementById("review-prev") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    prevStep();
+
+                });
+
+            document.getElementById("review-btn") ?
+                .addEventListener("click", function(e) {
+
+                    e.preventDefault();
+
+                    document.getElementById("review-name").innerText =
+                        document.getElementById("full-name").value;
+
+                    document.getElementById("review-email").innerText =
+                        document.getElementById("email").value;
+
+                    document.getElementById("review-phone").innerText =
+                        document.getElementById("phone").value;
+
+                    document.getElementById("review-address").innerText =
+                        document.getElementById("street").value + ", " +
+                        document.getElementById("city").value + ", " +
+                        document.getElementById("country").value;
+
+                    document.getElementById("review-education").innerText =
+                        document.getElementById("degree").value + " - " +
+                        document.getElementById("institution").value;
+
+                    document.getElementById("review-resume").innerText =
+                        document.getElementById("resume").value;
+
+                    nextStep();
+
+                });
+
+        });
+    </script>
+</body>
+
+</html>
