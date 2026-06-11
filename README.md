@@ -51,9 +51,9 @@ This project demonstrates best-in-class UX patterns for onboarding flows, combin
 
 | Resource | Link |
 |----------|------|
-| 🌐 Live Site | [your-live-url.webflow.io](#) |
+| 🌐 Live Site | [https://mutli-step-form-cms.webflow.io/](#) |
 | 🧩 Webflow Clone | [Clone on Webflow](#) |
-| 💻 GitHub Repo | [github.com/your-username/project](#) |
+| 💻 GitHub Repo | [github.com/busrulnakibbahid/cms-multi-step-form](#) |
 
 ---
 
